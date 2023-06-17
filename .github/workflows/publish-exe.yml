@@ -5,6 +5,9 @@ on:
     tags:
       - "[0-9].[0-9]+.[0-9]+"
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: windows-latest
@@ -16,7 +19,7 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: build
-          args: --release --message-format=json
+          args: --release
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
